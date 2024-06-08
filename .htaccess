@@ -3,3 +3,5 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule (.*) index.php?route=$1
+Options -Indexes
+ErrorDocument 403 /index.php?route=error/error/403
