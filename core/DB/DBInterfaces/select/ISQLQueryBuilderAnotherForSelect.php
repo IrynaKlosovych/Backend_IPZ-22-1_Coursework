@@ -29,4 +29,5 @@ interface ISQLQueryBuilderAnotherForSelect extends ISQLQueryBuilderBuild, ISQLQu
     public function orderBy(array $columns, string $direction): ISQLQueryBuilderAnotherForSelect;
 
     public function limit(int $number): ISQLQueryBuilderAnotherForSelect;
+    public function buildAndExecute(): array|false;
 }
