@@ -2,6 +2,7 @@
 /**
  * @var array $code
  */
+$this->Title = "Помилка $code[0]"
 ?>
 <div class="rainbow-wrapper">
     <div class="red"></div>
