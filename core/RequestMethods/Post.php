@@ -1,6 +1,6 @@
 <?php
 
-namespace core;
+namespace core\RequestMethods;
 
 class Post extends RequestMethod
 {

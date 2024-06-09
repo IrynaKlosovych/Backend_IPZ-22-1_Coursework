@@ -2,11 +2,15 @@
 
 namespace core;
 
+use core\RequestMethods\Get;
+use core\RequestMethods\Post;
+
 class Controller{
     protected Template $template;
-    public $isPost=false;
-    public $isGet=false;
-    public $post;
+    public bool $isPost=false;
+    public bool $isGet=false;
+    public Post $post;
+    public Get $get;
     public function __construct(){
         $action = Core::getInstance()->actionName;
         $module = Core::getInstance()->moduleName;
@@ -17,22 +21,17 @@ class Controller{
             case 'GET': $this->isGet=true; break;
         }
         $this->post = new Post();
+        $this->get = new Get();
     }
-    public function render($pathToView){
-        $this->template->setTemplateFilePath($pathToView);
+    public function render($pathToView=null):array{
+        if(!empty($pathToView))
+            $this->template->setTemplateFilePath($pathToView);
         return [
-            "Title"=>"Title",
             "Content"=>$this->template->getHTML()
         ];
     }
-    public function redirect($path){
+    public function redirect($path):void{
         header("Location: {$path}");
         die;
-    }
-    public function setErrorMessage($message=null){
-        $this->template->setParam("errorMessage", $message);
-    }
-    public function clearErrorMessage(){
-        $this->setErrorMessage();
     }
 }

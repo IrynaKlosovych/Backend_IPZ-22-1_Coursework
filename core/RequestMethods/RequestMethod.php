@@ -1,10 +1,10 @@
 <?php
 
-namespace core;
+namespace core\RequestMethods;
 
 class RequestMethod
 {
-    public $array;
+    public array $array;
     public function __construct($array)
     {
         $this->array=$array;
@@ -13,7 +13,7 @@ class RequestMethod
     public function __get($name){
         return $this->array[$name];
     }
-    public function getAll(){
+    public function getAll():array{
         return $this->array;
     }
 }

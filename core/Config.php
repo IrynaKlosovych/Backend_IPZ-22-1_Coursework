@@ -2,30 +2,43 @@
 
 namespace core;
 
+/**
+ * @property string $dbHost
+ * @property string $dbName
+ * @property string $dbLogin
+ * @property string $dbPassword
+ * @property string $name
+ * @property string $surname
+ * @property string $email
+ * @property string $error404
+ * @property string $error403
+ */
 class Config
 {
-    protected $params;
-    protected static $instance;
+    protected array $params;
+    protected static Config $instance;
 
     private function __construct()
     {
-        $directory='config';
+        $directory = 'config';
         $configFiles = scandir($directory);
-        foreach ($configFiles as $configFile){
-            if(str_ends_with($configFile, '.php')){
-                $path = $directory.'/'.$configFile;
-                include ($path);
+        foreach ($configFiles as $configFile) {
+            if (str_ends_with($configFile, '.php')) {
+                $path = $directory . '/' . $configFile;
+                include($path);
             }
         }
         $this->params = [];
-        foreach ($Config as $config){
-            foreach ($config as $key=>$value){
-                $this->$key=$value;
+
+        /** @var array $Config */
+        foreach ($Config as $config) {
+            foreach ($config as $key => $value) {
+                $this->$key = $value;
             }
         }
     }
 
-    public static function getInstance()
+    public static function getInstance(): Config
     {
         if (empty(self::$instance))
             self::$instance = new self();
