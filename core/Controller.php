@@ -4,6 +4,7 @@ namespace core;
 
 use core\RequestMethods\Get;
 use core\RequestMethods\Post;
+use JetBrains\PhpStorm\NoReturn;
 
 class Controller{
     protected Template $template;
@@ -14,7 +15,7 @@ class Controller{
     public function __construct(){
         $action = Core::getInstance()->actionName;
         $module = Core::getInstance()->moduleName;
-        $path="views/{$module}/{$action}.php";
+        $path="views/$module/$action.php";
         $this->template=new Template($path);
         switch($_SERVER["REQUEST_METHOD"]){
             case 'POST': $this->isPost=true; break;
@@ -30,8 +31,8 @@ class Controller{
             "Content"=>$this->template->getHTML()
         ];
     }
-    public function redirect($path):void{
-        header("Location: {$path}");
+    #[NoReturn] public function redirect($path):void{
+        header("Location: $path");
         die;
     }
 }
