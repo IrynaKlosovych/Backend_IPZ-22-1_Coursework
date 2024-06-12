@@ -7,7 +7,9 @@ function searchFile(string $filename, array $directories): ?string
         $files = scandir($absolutePath);
         if ($files !== false) {
             if (in_array($filename, $files)) {
-                return $directory . "/". $filename;
+                $relativePath = substr($absolutePath, strlen($_SERVER['DOCUMENT_ROOT']));
+                $relativePath = str_replace('\\', '/', $relativePath);
+                return $relativePath . "/" . $filename;
             }
         } else {
             return null;

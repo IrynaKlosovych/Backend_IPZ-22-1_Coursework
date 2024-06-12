@@ -22,4 +22,8 @@ class Session
             return null;
         return $_SESSION[$name];
     }
+    public function removeAll():void{
+        $_SESSION= array();
+        session_destroy();
+    }
 }
