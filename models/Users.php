@@ -12,7 +12,6 @@ require_once("searchFile.php");
  * @property string surname
  * @property string email
  * @property string password
- * @property string about
  * @property string photo
  * @property bool isAdmin
  */

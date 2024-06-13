@@ -38,7 +38,6 @@ class UserController extends Controller
             $user->surname = $surname;
             $user->password = Users::hashPassword($pass);
             $user->email = $email;
-            $user->about = "";
             $user->photo = Users::getRandomAvatar();
             $user->isAdmin = false;
             $user->save();
