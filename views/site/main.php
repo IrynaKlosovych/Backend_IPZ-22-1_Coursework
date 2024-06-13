@@ -14,7 +14,7 @@ $userPhoto = Users::searchPhoto(Core::getInstance()->session->get("email"));
     </div>
     <div><a href="/page/index">Переглянути сторінки</a></div>
     <div><a href="/page/create">Створити сторінку</a></div>
-    <div><a href="/page/update">Оновити сторінку</a></div>
+    <div></div>
     <div>
         <form action="/user/logout" method="post">
             <button>Вийти</button>
