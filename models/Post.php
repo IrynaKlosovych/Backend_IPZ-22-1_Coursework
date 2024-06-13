@@ -25,4 +25,10 @@ class Post extends Model
             ->where("title", "=", $title)
             ->buildAndExecute();
     }
+    public static function setAnotherIDAllPostsOfUser(int $id):void{
+        Core::getInstance()->db->createUpdate()
+            ->update(static::$table, ["id_user"=>1])
+            ->where("id_user", "=", $id)
+            ->buildAndExecute();
+    }
 }

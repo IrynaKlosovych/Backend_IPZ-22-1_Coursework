@@ -6,6 +6,7 @@ use core\Controller;
 use core\Core;
 use JetBrains\PhpStorm\NoReturn;
 use models\Page;
+use models\Post;
 use models\Users;
 
 class UserController extends Controller
@@ -94,6 +95,7 @@ class UserController extends Controller
         if ($this->isPost) {
             $id_user = Core::getInstance()->session->get("id");
             Page::setAnotherIDPageForDeletedUser($id_user);
+            Post::setAnotherIDAllPostsOfUser($id_user);
             Users::deleteById($id_user);
             Users::UserLogout();
         }
